@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+def libs = rootProject.ext.libraries;
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion "23.0.3"
+
+  defaultConfig {
+    applicationId "com.example.artjimlop.myapplication"
+    minSdkVersion 16
+    targetSdkVersion 23
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.mockito:mockito-core:1.9.5'
+  testCompile 'org.assertj:assertj-core:1.7.0'
+
+  // Architecture dependencies
+  apt "com.google.dagger:dagger-compiler:${libs.dagger}"
+  provided "org.glassfish:javax.annotation:${libs.javax_annotation}"
+  compile "com.google.dagger:dagger:${libs.dagger}"
+
+  // UI dependencies
+  compile "com.android.support:appcompat-v7:${libs.supportVersion}"
+  compile "com.android.support:design:${libs.supportVersion}"
+  compile "com.android.support:cardview-v7:${libs.supportVersion}"
+  compile "com.jakewharton:butterknife:${libs.butterknife}"
+  compile "com.squareup.picasso:picasso:${libs.picasso}"
+  compile "com.google.guava:guava:${libs.guava}"
+
+  // Module dependencies
+  compile project(path: ':domain')
+  compile project(path: ':data')
+}

@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">Capitan America</string>
+
+  <string name="error_request">Something went wrong!</string>
+  <string name="error_comic">Comic info not found</string>
+  <string name="error_no_title">No title found</string>
+  <string name="error_no_description">No description found</string>
+
+  <string name="public_key">6a7ed890b4b941a925202a5630d5b162</string>
+  <string name="private_key">0f1d0fdf46a0bf32f962b0b9997233c0395cdf8e</string>
+  <string name="character_id">1009220</string>
+</resources>

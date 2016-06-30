@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+def libs = rootProject.ext.libraries;
+
+compileJava {
+    //noinspection GroovyUnusedAssignment
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    //noinspection GroovyUnusedAssignment
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+configurations {
+    provided
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // Architecture dependencies
+    provided "com.google.dagger:dagger-compiler:${libs.dagger}"
+    provided "org.glassfish:javax.annotation:${libs.javax_annotation}"
+    compile "com.google.dagger:dagger:${libs.dagger}"
+
+    compile 'junit:junit:4.12'
+    compile 'org.mockito:mockito-core:1.9.5'
+}
